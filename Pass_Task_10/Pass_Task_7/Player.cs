@@ -85,12 +85,54 @@ public class Player
 
     /**
      * <summary>
-     * This is a property to help with retriving the player talents
+     * This is a read only property to help with retriving the player talents
      * </summary>
      */
     public List<Talent> Talents 
     { 
         get => _talents;
+    }
+
+    /**
+     * <summary>
+     * This is a property that allows for changing the player energy level or retrieving it. 
+     * Provide an integer value to update/set the player's energy levels.
+     * </summary>
+     * <return>
+     * If used as a getter it returns an integer value of the energy level
+     * </return>
+     */
+    public int EnergyLevel { 
+        get => _energyLevel;
+        set => _energyLevel = value;
+    }
+
+    /**
+     * <summary>
+     * This is a property that allows for changing the player name or retrieving it. 
+     * Provide string value to update/set the player's name.
+     * </summary>
+     * <return>
+     * If used as a getter it returns an string value of the player name
+     * </return>
+     */
+    public string Name { 
+        get => _name;
+        set => _name = value;
+    }
+
+    /**
+     * <summary>
+     * This is a property that allows for changing the player health status or retrieving it.
+     * Provide a boolean value to update or set the player's health status.
+     * </summary>
+     * <return>
+     * Returns a boolean value if used as an attribute accessor.
+     * </return>
+     */
+    public Boolean HealthStatus { 
+        get => _healthStatus;
+        set => _healthStatus = value;
     }
 
     /**
@@ -159,7 +201,7 @@ public class Player
      * This method prints out both the player details along with the talents they posses
      * </summary>
      */
-    public void Print()
+    public void PrintStats()
     {
         Console.WriteLine("===== Player Details ======");
         Console.WriteLine($"Name: {_name}\nEnergy Level: {_energyLevel}\nHealth Status: {_healthStatus}");
@@ -177,25 +219,28 @@ public class Player
 
     /**
      * <summary>
-     * This is a void method that prints out a message affirming that the player is
+     * This is a string type method that returns a message affirming that the player is
      * attacking using the talent with the name passed. If not such talent exists
      * the method prints out a message confirming the talent was not found.
      * </summary>
+     * 
      * <param name="talentName">
      * Pass a talent name to be used in attacking
      * </param>
+     * 
+     * <return>
+     *  Returns a string value showing the talent being used in attacking or affirming that
+     * the player doesn't have any talents yet.
+     * </return>
      */
-    public void AttackWith(string talentName)
+    public string AttackWith(string talentName)
     {
-        foreach(Talent item in _talents)
-        {
-            if (item.Name == talentName) 
-            {
-                Console.WriteLine($"Player attacking with {talentName}");
-            }
-            else {
-                Console.WriteLine("No talent found for this player");
-            }
+        if (_talents.FirstOrDefault( n => n.Name == talentName) != null){
+            var found = _talents.FirstOrDefault( n => n.Name == talentName);
+            return $"Player {this._name} attacking with:\nTalent Name: {found.Name}\nTalent Level: {found.Level}\nTalent Kind: {found.Kind }\n{found?.Cast()}";
+        }
+        else{
+            return "No such talent found for this player";
         }
     }
     

@@ -15,7 +15,6 @@ public class Program
         <summary>
             The CastAll is a void method that calls the Cast method belonging to the
             talent objects in the telent list passed to it.
-            
         </summary>
     */
     private static void CastAll(Talent[] talents){
@@ -23,7 +22,7 @@ public class Program
         for (int i = 0; i < talents.Length; i++){
             Console.WriteLine($"Talent Name: {talents[i].Name}\nTalent Level: {talents[i].Level}\nTalent Kind: {talents[i].Kind}\n");
             Console.WriteLine(talents[i].Cast());
-            Console.WriteLine("========================================");
+            Console.WriteLine("========================================\n");
         }
     }
     public static void Main(string[] args)
@@ -32,8 +31,13 @@ public class Program
         Talent randomCharge = new Talent( "Random Charge", 2, 2 );
         Talent swirl = new Talent( "Swirl", 4, 4 );
         
+        Player billy = new Player("Billy");
         Talent[] talents = { chargeAttack, randomCharge, swirl };
+        billy.AddTalent(talents);
         
-        CastAll(talents);
+        // CastAll(talents);
+
+        Console.WriteLine(billy.AttackWith("Swirl"));
+        Console.WriteLine($"==============================");
     }
 }
