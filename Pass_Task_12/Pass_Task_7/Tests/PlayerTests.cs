@@ -1,5 +1,7 @@
 using NUnit.Framework;
 using System;
+using Pass_Task_7.Talents;
+
 namespace Pass_Task_7.Tests;
 
 
@@ -28,9 +30,9 @@ public class PlayerTests
     [Test]
     public void TestAddTalent()
     {
-        Talent chargeAttack = new Talent( "Charge Attack", 1, 1 );
-        Talent randomCharge = new Talent( "Random Charge", 2, 2 );
-        Talent swirl = new Talent( "Swirl", 4, 4 );
+        NormalAttack chargeAttack = new( "Charge Attack", 1, 1 );
+        NormalAttack randomCharge = new( "Random Charge", 2, 2 );
+        NormalAttack swirl = new( "Swirl", 4, 4 );
         
         Player billy = new Player("Billy");
         Talent[] talents = { chargeAttack, randomCharge, swirl };
@@ -54,9 +56,9 @@ public class PlayerTests
     [Test]
     public void TestRemoveTalent()
     {
-        Talent chargeAttack = new Talent( "Charge Attack", 1, 1 );
-        Talent randomCharge = new Talent( "Random Charge", 2, 2 );
-        Talent swirl = new Talent( "Swirl", 4, 4 );
+        NormalAttack chargeAttack = new( "Charge Attack", 1, 1 );
+        NormalAttack randomCharge = new( "Random Charge", 2, 2 );
+        NormalAttack swirl = new( "Swirl", 4, 4 );
         
         Player billy = new Player("Billy");
         Talent[] talents = { chargeAttack, randomCharge, swirl };
@@ -83,9 +85,9 @@ public class PlayerTests
     [Test]
     public void TestFetchingTalent()
     {
-        Talent chargeAttack = new Talent( "Charge Attack", 1, 1 );
-        Talent randomCharge = new Talent( "Random Charge", 2, 2 );
-        Talent swirl = new Talent( "Swirl", 4, 4 );
+        NormalAttack chargeAttack = new( "Charge Attack", 1, 1 );
+        NormalAttack randomCharge = new( "Random Charge", 2, 2 );
+        NormalAttack swirl = new( "Swirl", 4, 4 );
         
         Player billy = new Player("Billy");
         Talent[] talents = { chargeAttack, randomCharge, swirl };
@@ -110,9 +112,9 @@ public class PlayerTests
     [Test]
     public void TestAttackWith()
     {
-        Talent chargeAttack = new Talent( "Charge Attack", 1, 1 );
-        Talent randomCharge = new Talent( "Random Charge", 2, 2 );
-        Talent swirl = new Talent( "Swirl", 4, 4 );
+        NormalAttack chargeAttack = new( "Charge Attack", 1, 1 );
+        NormalAttack randomCharge = new( "Random Charge", 2, 2 );
+        NormalAttack swirl = new( "Swirl", 4, 4 );
         
         Player billy = new Player("Billy");
         Talent[] talents = { chargeAttack, randomCharge, swirl };
@@ -139,9 +141,9 @@ public class PlayerTests
     [Test]
     public void TestGetTalents()
     {
-        Talent chargeAttack = new Talent( "Charge Attack", 1, 1 );
-        Talent randomCharge = new Talent( "Random Charge", 2, 2 );
-        Talent swirl = new Talent( "Swirl", 4, 4 );
+        NormalAttack chargeAttack = new( "Charge Attack", 1, 1 );
+        NormalAttack randomCharge = new( "Random Charge", 2, 2 );
+        NormalAttack swirl = new( "Swirl", 4, 4 );
         
         Player billy = new Player("Billy");
         Talent[] talents = { chargeAttack, randomCharge, swirl };
