@@ -35,8 +35,9 @@ public class Program
         Talent[] talents = { chargeAttack, randomCharge, swirl };
         billy.AddTalent(talents);
         
-        // CastAll(talents);
-
+        CastAll(talents);
+        Console.WriteLine();
+        
         Console.WriteLine(billy.AttackWith("Swirl"));
         Console.WriteLine($"==============================");
     }

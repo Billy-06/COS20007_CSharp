@@ -51,7 +51,7 @@ public enum Kind
     a Talent object.
     <br/>
 
-    The Telent class has three constructors
+    The Talent class has three constructors
     <br/>
     (i) Default Constructor - the default constructor takes no parameters
         and assigns the player a name 'Unknown Talent', a skill level of beginner
@@ -203,8 +203,8 @@ public class Talent{
         </returns>
     */
     public string Name {
-        get { return _name; }
-        set { _name = value; }
+        get => _name; 
+        set => _name = value;
     }
     
     /**
@@ -222,8 +222,8 @@ public class Talent{
         </returns>
     */
     public Level Level { 
-        get {return _level;}
-        set { _level = value; }
+        get => _level;
+        set => _level = value;
     }
     
     /**
@@ -242,8 +242,8 @@ public class Talent{
         <returns>
     */
     public Kind Kind {
-        get {return _kind;}
-        set { _kind = value; }
+        get => _kind;
+        set => _kind = value; 
     }
     
 

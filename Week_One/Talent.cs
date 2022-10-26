@@ -57,34 +57,31 @@ public class Talent{
     }
 
     public string Name {
-        get { return _name; }
-        set { _name = value; }
+        get =>_name;
+        set => _name = value; 
     }
     
     public Level Level { 
-        get {return _level;}
-        set { _level = value; }
+        get => _level;
+        set => _level = value;
     }
     
     public Kind Kind {
-        get {return _kind;}
-        set { _kind = value; }
+        get => _kind;
+        set => _kind = value; 
     }
     
 
 
     public string Cast(){
         
-        if (_level == Level.Advanced)
-        {
+        if (_level == Level.Advanced){
             return $"\tBe Prepared to Feel the Swirl";
         }
-        else if(_level == Level.Intermediate && (_kind == Kind.NormalAttack || _kind == Kind.ElementalSkill))
-        {
+        else if(_level == Level.Intermediate && (_kind == Kind.NormalAttack || _kind == Kind.ElementalSkill)){
             return $"\tFeel the Force";
         }
-        else 
-        {
+        else {
            return $"\tZapp.. First Stage Triggered";
 
         }

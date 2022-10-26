@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Pass_Task_7;
 
@@ -220,7 +221,7 @@ public class Player
     /**
      * <summary>
      * This is a string type method that returns a message affirming that the player is
-     * attacking using the talent with the name passed. If not such talent exists
+     * attacking using the talent with the name passed. If no such talent exists
      * the method prints out a message confirming the talent was not found.
      * </summary>
      * 
@@ -235,6 +236,7 @@ public class Player
      */
     public string AttackWith(string talentName)
     {
+        // using FirstOrDefault for enumarable types: https://learn.microsoft.com/en-us/dotnet/api/system.linq.enumerable.firstordefault?view=net-7.0#definition
         if (_talents.FirstOrDefault( n => n.Name == talentName) != null){
             var found = _talents.FirstOrDefault( n => n.Name == talentName);
             return $"Player {this._name} attacking with:\nTalent Name: {found.Name}\nTalent Level: {found.Level}\nTalent Kind: {found.Kind }\n{found?.Cast()}";

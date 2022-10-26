@@ -8,8 +8,7 @@ class Program
     static void CastAll(Talent[] talents){
 
         for (int i = 0; i < talents.Length; i++){
-            Console.WriteLine($"Talent Name: {talents[i].Name}\nTalent Level: {talents[i].Level}\nTalent Kind: {talents[i].Kind}\n");
-            Console.WriteLine(talents[i].Cast());
+            Console.WriteLine($"Name: {talents[i].Name}\nLevel: {talents[i].Level}\nKind: {talents[i].Kind}\n{talents[i].Cast()}");
             Console.WriteLine("========================================");
         }
     }
