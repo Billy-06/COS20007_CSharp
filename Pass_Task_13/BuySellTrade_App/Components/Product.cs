@@ -11,9 +11,9 @@ public class Product
 
     private Category _category;
 
-    public Boolean Advertise { get; set; }
+    public Advertisement Advertise { get; set; }
 
-    public int ProductId
+    public int ProdId
     {
         get => _prodId;
         set => _prodId = value;
@@ -28,15 +28,46 @@ public class Product
         get => _price;
         set => _price = value;
     }
+    public Condition Condition 
+    {
+        get => _condition;
+        set => _condition = value;
+    }
+    public Category Category 
+    {
+        get => _category;
+        set => _category = value;
+    }
     public string Description 
     {
         get => _description;
         set => _description = value;
     }
 
+    public Product(string name, string description, double price, Condition condition, Category category)
+    {
+        _prodId = 0;
+
+        _name = name;
+        _description = description;
+        _price = price;
+        _condition = condition;
+        _category = category;
+        Advertise = new();
+    }
+
     public string PrintInfo()
     {
-        return $"Name: {_name}\nCategory: {_category}\nPrice: {_price}\nDescription: {_description}\nCondition: {_condition.ToString()}\n";
+        if (_prodId == 0) {
+
+            Console.WriteLine("Warning:\n================\nThis product has no ID");
+            Console.WriteLine("Please add this product to the catalogue so it can get assigned an ID");
+            return $"Product ID: *Missing*\nName: {_name}\nCategory: {_category}\nPrice: {_price}\nDescription: {_description}\nCondition: {_condition.ToString()}\n";
+            
+        } else {
+
+            return $"Product ID: {_prodId}\nName: {_name}\nCategory: {_category}\nPrice: {_price}\nDescription: {_description}\nCondition: {_condition.ToString()}\n";
+        }
     }
 }
 
