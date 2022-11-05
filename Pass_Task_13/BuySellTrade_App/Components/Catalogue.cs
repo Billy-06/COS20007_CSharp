@@ -9,7 +9,11 @@ public class Catalogue
 {
     private List<Product> _listOfProducts;
     
-    public Hashtable catalogue{ get; set; }
+    public Hashtable Stock
+    {
+        get;
+        set;
+    }
     public List<Category> Categories { get; set; }
 
     public List<Product> Adverts { get; set; }
@@ -20,10 +24,15 @@ public class Catalogue
         set => _listOfProducts = value;
     }
 
+    public Product this[int i]
+    {
+        get => _listOfProducts[i];
+        set => _listOfProducts[i] = value;
+    }
     public Catalogue()
     {
         _listOfProducts = new();
-        catalogue = new();
+        Stock = new();
         Adverts = new();
         Categories = new();
     }
@@ -46,12 +55,24 @@ public class Catalogue
             AddCategory(item);
             item.ProdId = GenerateId();
         }
-        catalogue = new();
+        Stock = new();
         Adverts = new();
         Categories = new();
     }
     public void AddItem(Product item)
     {
+        // var found = _listOfProducts.FirstOrDefault<Product>( n => n.Name == item.Name );
+        // if ( found != null ) {
+        //     if (item.Category == found.Category)
+        //     {
+        //         if (Stock.ContainsKey(item.Name)){
+        //             Int32.Parse(Stock[item.Name]) 
+        //         }
+        //         List<Product> stockCount = new();
+        //         stockCount.Add( item );
+        //         Stock[item.Name] = 
+        //     }
+        // }
         item.ProdId = GenerateId();
         AddCategory(item);
         _listOfProducts.Add( item );
@@ -62,6 +83,22 @@ public class Catalogue
     {
         if (Categories.FirstOrDefault<Category>( n => n == item.Category ) == null) Categories.Add( item.Category );
 
+    }
+
+    public void ShowCatalogue()
+    {
+        if (Categories.Count > 0){
+            Console.WriteLine("========================================");
+            Console.WriteLine("|        Your Product Categories        |");
+            Console.WriteLine("========================================");
+            foreach( Category item in Categories ) Console.WriteLine(item.Name);
+
+        }
+        else {
+            Console.WriteLine("========================================");
+            Console.WriteLine("|  You have yet to add any Categories   |");
+            Console.WriteLine("========================================");
+        }
     }
 
     public void AddItem(List<Product> items)
@@ -131,11 +168,12 @@ public class Catalogue
     }
 
     public int AllCategories() => Categories.Count;
+
     public int TotalCount() => _listOfProducts.Count;
+
     public int TotalAds() {
         CheckAdvert();
         return Adverts.Count;
-    
     }
 
     private void CheckAdvert()

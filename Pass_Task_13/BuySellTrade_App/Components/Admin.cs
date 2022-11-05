@@ -1,6 +1,7 @@
 using System;
 namespace BuySellTrade_App.Components;
 
+
 public class Admin : User
 {
     private Catalogue _catalogue;

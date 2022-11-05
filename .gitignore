@@ -3,3 +3,7 @@
 .vscode
 bin
 obj
+cmake-build-debug
+build
+*.idea
+*.cmake

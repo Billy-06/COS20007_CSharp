@@ -10,6 +10,5 @@ public class Cart
         set => _products = value;
     }
 
-    public int CartItems() => _products.Count;
 
 }

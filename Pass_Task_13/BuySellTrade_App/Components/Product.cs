@@ -62,11 +62,11 @@ public class Product
 
             Console.WriteLine("Warning:\n================\nThis product has no ID");
             Console.WriteLine("Please add this product to the catalogue so it can get assigned an ID");
-            return $"Product ID: *Missing*\nName: {_name}\nCategory: {_category}\nPrice: {_price}\nDescription: {_description}\nCondition: {_condition.ToString()}\n";
+            return $"Product ID: *Missing*\nName: {_name}\nCategory: {_category.Name}\nPrice: {_price}\nDescription: {_description}\nCondition: {_condition.ToString()}\n";
             
         } else {
 
-            return $"Product ID: {_prodId}\nName: {_name}\nCategory: {_category}\nPrice: {_price}\nDescription: {_description}\nCondition: {_condition.ToString()}\n";
+            return $"Product ID: {_prodId}\nName: {_name}\nCategory: {_category.Name}\nPrice: {_price}\nDescription: {_description}\nCondition: {_condition.ToString()}\n";
         }
     }
 }
