@@ -27,7 +27,7 @@ using BuySellTrade_App.Components;
  * </summary>
  */
 [TestFixture]
-public class AdminTest
+public class Tests
 {
     
     [Test]

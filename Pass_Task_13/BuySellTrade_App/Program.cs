@@ -1,6 +1,4 @@
 ﻿using System;
-using BuySellTrade_App.Components;
-
 namespace BuySellTrade_App;
 internal class Program
 {
