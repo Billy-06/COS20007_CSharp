@@ -1,5 +1,11 @@
-add_executable(Executable Main.cc)
+add_executable(
+    ${CREDIT_TASK_EXECUTABLE}
+    Main.cc
+)
 
-target_include_directories(
-    Executable PUBLIC ${CREDIT_TASK_LIBRARY}
+# Linkt the executable to the header files
+target_link_libraries(
+    ${CREDIT_TASK_EXECUTABLE}
+    PUBLIC
+    ${CREDIT_TASK_LIBRARY}
 )

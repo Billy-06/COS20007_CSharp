@@ -22,8 +22,17 @@ public:
 
     User& operator=(const User& user);
 
+    string getFirstname() const;
+    void setFirstname(string value);
+
+    string getLastname() const;
+    void setLastname(string value);
+
+    string getPassword() const;
+    void setPassword(string value);
+
     void logIn();
     void logOut();
 
-    virtual string print();
+    virtual void print();
 };

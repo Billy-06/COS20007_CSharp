@@ -6345,12 +6345,12 @@
 										"$ref": "AAAAAAGEIfQPP+MjTZ0="
 									},
 									"font": "Arial;13;0",
-									"left": 1735,
-									"top": 1436,
+									"left": 1720,
+									"top": 1472,
 									"width": 73.35986328125,
 									"height": 13,
-									"alpha": 0.6183022496975032,
-									"distance": 84.77027781009096,
+									"alpha": 0.802637710954031,
+									"distance": 48,
 									"hostEdge": {
 										"$ref": "AAAAAAGEIfQPP+MntFc="
 									},
@@ -11470,7 +11470,7 @@
 										"$ref": "AAAAAAGEKV6TDp4C2UI="
 									},
 									"edgePosition": 1,
-									"text": "+_tasks *..1"
+									"text": "-_tasks *..1"
 								},
 								{
 									"_type": "EdgeLabelView",
@@ -15979,7 +15979,8 @@
 									"$ref": "AAAAAAGEIdcs2Akzs/0="
 								},
 								"aggregation": "composite"
-							}
+							},
+							"visibility": "private"
 						}
 					],
 					"attributes": [

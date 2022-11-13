@@ -5,15 +5,38 @@
 class Student : public User
 {
 private:
+    /**
+     * @brief This is the student ID of the Student::Student object
+     *
+     */
     int _studentId;
-    vector<Unit> _units;
+
+    /**
+     * @brief This represents the list of units that a student
+     * would be taking in a given sememster. These objects
+     * are of type Unit::Unit.
+     *
+     */
+    vector<Unit*> _units;
 
 public:
     Student();
+    Student(string fname, string lname, string password, int studentId);
     Student(const Student& stud);
     ~Student();
 
-    Student& operator=(const Student& stud);
+    int getId() const;
+    void setId(int value);
 
+    Unit& getUnit(string unitName);
+
+    Student& operator=(const Student& stud);
+    bool operator==(const Student& stud);
+    void viewGrade(int studentId,string unitName) const;
+    vector<Unit*> semesterUnits() const;
+    void addUnit(Unit* unit);
+    void removeUnit(Unit* unit);
+
+    void print() override;
 
 };

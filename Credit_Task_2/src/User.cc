@@ -38,6 +38,33 @@ User& User::operator=(const User& user)
     return *this;
 }
 
+string User::getFirstname() const
+{
+    return _firstname;
+}
+void User::setFirstname(string value)
+{
+    _firstname = value;
+}
+
+string User::getLastname() const
+{
+    return _lastname;
+}
+void User::setLastname(string value)
+{
+    _lastname = value;
+}
+
+string User::getPassword() const
+{
+    return _password;
+}
+void User::setPassword(string value)
+{
+    _password = value;
+}
+
 void User::logIn()
 {
     _loggedIn = true;
@@ -47,13 +74,13 @@ void User::logOut()
     _loggedIn = false;
 }
 
-string User::print()
+void User::print()
 {
     string status = (_loggedIn) ? "Logged In" : "Logged Out";
 
-    return
-        "First Name: " + _firstname
-        + "\nLastName: "+ _lastname
-        + "\nPassword: "+ _password
-        + "\nLog In Status: "+ status;
+    cout
+        << "\nFirst Name: " <<  _firstname
+        << "\nLastName: " << _lastname
+        << "\nPassword: " << _password
+        << "\nLog In Status: " << status;
 }
