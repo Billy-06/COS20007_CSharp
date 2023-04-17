@@ -3,8 +3,8 @@
 
 using namespace std;
 
-Unit::Unit(string name, string sem, string desc)
-: _name(name), _semester(sem), _description(desc)
+Unit::Unit(int code, string name, string sem, string desc)
+: _code(code), _name(name), _semester(sem), _description(desc)
 {
 
     _grade = (Grade)5;
@@ -13,6 +13,7 @@ Unit::Unit(string name, string sem, string desc)
 
 Unit::Unit(const Unit& unit)
 {
+    this->_code = unit._code;
     this->_name = unit._name;
     this->_semester = unit._semester;
     this->_description = unit._description;
@@ -29,6 +30,7 @@ Unit::~Unit()
 
 Unit& Unit::operator=(const Unit& unit)
 {
+    this->_code = unit._code;
     this->_name = unit._name;
     this->_semester = unit._semester;
     this->_description = unit._description;
@@ -41,6 +43,7 @@ Unit& Unit::operator=(const Unit& unit)
 bool Unit::operator==(const Unit& unit)
 {
     if (
+        this->_code == unit._code &&
         this->_name == unit._name &&
         this->_semester == unit._semester &&
         this->_description == unit._description &&
@@ -65,6 +68,16 @@ Assessment& Unit::getAssessment(string assmntName)
 
         if (search != _assessment.end()) return **search;
     }
+}
+
+int Unit::getCode()
+{
+    return _code;
+}
+
+void Unit::setCode(int value)
+{
+    _code = value;
 }
 
 void Unit::setName(string name)
@@ -185,6 +198,25 @@ void Unit::display(int studId)
     }
 }
 
+void Unit::appPrint()
+{
+    cout << "\nUnit Code: " << this->_code
+    << "\nName: " << this->_name
+    << "\nSemester: " << this->_semester
+    << "\nDescription: " << this->_description
+    << "\nAssessments:\n"
+    << "=================\n";
+    if (_assessment.size() > 0)
+    {
+        for_each(
+            _assessment.begin(),
+            _assessment.end(),
+            [](Assessment* item) { item->print(); }
+        );
+    }
+    else cout << "No Assessments added yet." << endl;
+}
+
 void Unit::print()
 {
     string gradePrint;
@@ -211,7 +243,8 @@ void Unit::print()
         break;
     }
 
-    cout << "\nName: " << this->_name
+    cout << "\nUnit Code: " << this->_code
+        << "\nName: " << this->_name
         << "\nSemester: " << this->_semester
         << "\nDescription: " << this->_description
         << "\nGrade: " << gradePrint
@@ -225,5 +258,5 @@ void Unit::print()
                 [](Assessment* item) { item->print(); }
             );
         }
-        else cout << "No Assessments added yet. Consider adding some" << endl;
+        else cout << "No Assessments added yet." << endl;
 }

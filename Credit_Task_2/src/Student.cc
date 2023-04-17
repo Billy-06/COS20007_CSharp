@@ -9,12 +9,7 @@ Student::Student() : User()
 Student::Student(string fname, string lname, string password, int studentId)
 : User(fname, lname, password), _studentId(studentId)
 {
-    Unit* webDev = new Unit(
-        "Web Development",
-        "Semester 2",
-        "This unit covers advanced topics in web development"
-    );
-    _units.insert(_units.begin(), webDev);
+
 }
 Student::Student(const Student& stud)
 {
@@ -86,14 +81,14 @@ vector<Unit*> Student::semesterUnits() const
     return _units;
 }
 
-Unit& Student::getUnit(string unitName)
+Unit& Student::getUnit(int unitCode)
 {
     if (_units.size() > 0)
     {
         auto search = find_if(
             _units.begin(),
             _units.end(),
-            [&unitName](Unit* item) { return item->getName() == unitName; }
+            [&unitCode](Unit* item) { return item->getCode() == unitCode; }
         );
 
         if(search != _units.end()) return **search;
@@ -118,16 +113,18 @@ void Student::addUnit(Unit* unit)
     );
     if (checker != _units.end())
     {
+        Unit* newUnit = new Unit(*unit);
+
         (_units.size() > 0)
             ? _units.push_back(unit)
-            : _units.insert(_units.begin(), unit);
+            : _units.insert(_units.begin(), newUnit);
         cout
-        << "!!!!!!!!!  SUCCESS !!!!!!!"
-        << "\nYou've successfully added" << unit->getName() << endl;
+            << "\n!!!!!!!!!  SUCCESS !!!!!!!"
+            << "\nYou've successfully added" << unit->getName() << endl;
     }
     else {
         cout
-        << "!!!!!!!!!  FAILED !!!!!!!"
+        << "\n!!!!!!!!!  FAILED !!!!!!!"
         << "\nYou appear to already have " << unit->getName() << ". You can only have one class for each unit" << endl;
     }
 }
@@ -155,6 +152,23 @@ void Student::removeUnit(Unit* unit)
     }
 }
 
+void Student::printUnits()
+{
+    if (_units.size() > 0)
+    {
+        for_each(
+            _units.begin(),
+            _units.end(),
+            [](Unit* item) { item->print(); }
+        );
+    }
+    else {
+        cout
+        << "\nNo units added just yet. Please consider adding some" << endl;
+    }
+
+}
+
 void Student::print()
 {
     string status = (this->_loggedIn) ? "Logged In" : "Logged Out";
@@ -163,7 +177,7 @@ void Student::print()
     << "\nName: " << this->_firstname << " " << this->_lastname
     << "\nStatus: " << status
     << "\nUnits: "
-    << "==================" << endl;
+    << "\n==================" << endl;
 
     for_each(
         _units.begin(),

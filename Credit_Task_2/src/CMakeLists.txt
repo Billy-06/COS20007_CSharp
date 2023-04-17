@@ -6,6 +6,7 @@ add_library(
     User.h User.cc Unit.h Unit.cc
     Lecturer.h Lecturer.cc
     Student.h Student.cc ClassRoom.h ClassRoom.cc
+    QueryInterface.h QueryInterface.cc
 )
 
 

@@ -36,6 +36,15 @@ Lecturer& Lecturer::operator=(const Lecturer& lec)
     return *this;
 }
 
+int Lecturer::getId()
+{
+    return _lecturerId;
+}
+void Lecturer::setId(int value)
+{
+    _lecturerId = value;
+}
+
 vector<ClassRoom*> Lecturer::getClassroom() const
 {
     return _classrooms;
@@ -85,7 +94,7 @@ void Lecturer::postResuts(ClassRoom* clsrom, Student* stud, Unit* unit, Assessme
             if (clsSearch != _classrooms.end())
             {
                 auto studnt = (**clsSearch).getStudent(stud->getId());
-                auto unt = studnt.getUnit(unit->getName());
+                auto unt = studnt.getUnit(unit->getCode());
                 auto assessmnt = unt.getAssessment(asmnt->getName());
 
                 assessmnt = *asmnt;
@@ -94,18 +103,19 @@ void Lecturer::postResuts(ClassRoom* clsrom, Student* stud, Unit* unit, Assessme
                 << "\n!!!!!!! SUCCESS !!!!!!!"
                 << "\nAssessment Details posted successfully." << endl;
             }
-        }
-        else {
+
+        } else {
             cout
             << "\n!!!!!!! FAILED !!!!!!!"
             << "\n" << this->getFirstname() << " " << this->getLastname()
             << " appears not to have any classes assigend."
             << "\nPlease consider assigning some classes." << endl;
         }
+
     } else {
-            cout
-            << "\n!!!!!!! FAILED !!!!!!!"
-            << "\nPlease enter the right Lecturer ID" << endl;
+        cout
+        << "\n!!!!!!! FAILED !!!!!!!"
+        << "\nPlease enter the right Lecturer ID" << endl;
     }
 }
 
@@ -114,29 +124,92 @@ void Lecturer::updateResuts(ClassRoom* clsrom, Student* stud, Unit* unit, Assess
     this->postResuts(clsrom, stud, unit, asmnt, lecId);
 }
 
-Unit& Lecturer::createUnit(string name, string sem, string desc, int lecId)
+Unit& Lecturer::createUnit(int code, string name, string sem, string desc, int lecId)
 {
-    Unit* item = new Unit(name, sem, desc);
+    Unit* item = new Unit(code, name, sem, desc);
     return *item;
 
 }
 
-string Lecturer::updateUnit(string oldUnitName, Unit* newUnit, int lecId)
+void Lecturer::deleteUnit(ClassRoom* clsrom, string unitName, int lecId)
 {
-    return "";
+    if (_classrooms.size() > 0)
+    {
+        auto search = find_if(
+            _classrooms.begin(),
+            _classrooms.end(),
+            [&clsrom](ClassRoom* item) { return item->classNumber == clsrom->classNumber;  }
+        );
+
+        if (search != _classrooms.end())
+        {
+            auto findUnit = (*search)->getUnit();
+            if (findUnit != nullptr)
+            {
+                delete findUnit;
+                cout
+                << "\n!!!!!!!! SUCCESS !!!!!!!!"
+                << "\nYou don't appear to have the class in question." << endl;
+            }
+            else {
+                cout
+                << "\n!!!!!!!! FAILED !!!!!!!!"
+                << "\nThe Unit in question couldn't be found." << endl;
+            }
+        }
+        else {
+            cout
+            << "\n!!!!!!!! FAILED !!!!!!!!"
+            << "\nYou don't appear to have the class in question." << endl;
+        }
+    }
+    else {
+        cout
+        << "\n!!!!!!!! FAILED !!!!!!!!"
+        << "\nYou don't appear to have any classes assigned at this time."
+        << "\nConsider assigning somce classes to this lecturer." << endl;
+    }
 }
 
-void Lecturer::deleteUnit(string unitName, int lecId)
+void Lecturer::getStudent(ClassRoom* clsrom, int studId, int lecId)
 {
+    if (lecId > 0)
+    {
+        if (_classrooms.size() > 0)
+        {
+            auto search = find_if(
+                _classrooms.begin(),
+                _classrooms.end(),
+                [&clsrom](ClassRoom* item) { return item->classNumber == clsrom->classNumber;  }
+            );
 
+            if (search != _classrooms.end())
+            {
+                try {
+                    auto finder = (*search)->getStudent(studId);
+                    finder.print();
+
+                } catch (exception e)
+                {
+                    cout
+                    << "\n!!!!!!!! FAILED !!!!!!!!"
+                    << "\nStudent not found!!\n" << endl;
+
+                }
+
+            }
+        }
+        else {
+            cout
+            << "\n!!!!!!!! FAILED !!!!!!!!"
+            << "\nYou don't appear to have any classes assigned at this time."
+            << "\nConsider assigning somce classes to this lecturer." << endl;
+        }
+
+    }
 }
 
-void Lecturer::getStudent(int studId, int lecId)
-{
-
-}
-
-void Lecturer::postGrade(Student* stud, Unit* unit, int lecId)
+void Lecturer::postGrade(ClassRoom* clsrom, Student* stud, Unit* unit, int lecId)
 {
 
 }

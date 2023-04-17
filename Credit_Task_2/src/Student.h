@@ -28,7 +28,7 @@ public:
     int getId() const;
     void setId(int value);
 
-    Unit& getUnit(string unitName);
+    Unit& getUnit(int unitCode);
 
     Student& operator=(const Student& stud);
     bool operator==(const Student& stud);
@@ -37,6 +37,7 @@ public:
     void addUnit(Unit* unit);
     void removeUnit(Unit* unit);
 
+    void printUnits();
     void print() override;
 
 };

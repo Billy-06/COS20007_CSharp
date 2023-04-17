@@ -5,16 +5,28 @@
 
 using namespace std;
 
+/**
+ * @brief This enum provides enumeration literals for the
+ * catergories Assessment objects can fall under. It provides
+ * six categories namely,
+ * HD Task, Distinction Task, Credit Task, Pass Task, Groupwork and
+ * Online Test
+ *
+ */
 enum Category
 {
-    PassTask,
-    CreditTask,
-    DistinctionTask,
     HDTask,
+    DistinctionTask,
+    CreditTask,
+    PassTask,
     GroupWork,
     OnlineTest
 };
 
+/**
+ * @brief This class implementation provides a
+ *
+ */
 class Assessment
 {
 private:

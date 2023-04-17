@@ -65,6 +65,11 @@ void User::setPassword(string value)
     _password = value;
 }
 
+bool User::getStatus()
+{
+    return _loggedIn;
+}
+
 void User::logIn()
 {
     _loggedIn = true;

@@ -40,6 +40,12 @@ private:
      */
     string _semester;
     /**
+     * @brief The code assigned to the unit
+     *
+     */
+    int _code;
+
+    /**
      * @brief The description of the contents of the Unit::Unit object
      *
      */
@@ -61,12 +67,13 @@ public:
     /**
      * @brief Construct a new Unit:: Unit object
      *
+     * @param code Intended to be the Unit code of the Unit being initialised
      * @param name Intended to be the name of the Unit being initialised
      * @param sem  The semster during which the unit will be taken
      * @param desc A brief descriptin on the unit coverage and its
      *              contents
      */
-    Unit(string name, string sem, string desc);
+    Unit(int code, string name, string sem, string desc);
 
     /**
      * @brief Construct a new Unit:: Unit object
@@ -101,6 +108,20 @@ public:
      * @return Returns true if the Unit::Unit objects being compared are equal
      */
     bool operator==(const Unit& unit);
+
+    /**
+     * @brief Get the unit Code of the unit object
+     *
+     * @return The code of the unit
+     */
+    int getCode();
+
+    /**
+     * @brief Set the unit Code object of the unit object
+     *
+     * @param value This is the value to be assigned as the unit's code
+     */
+    void setCode(int value);
 
     /**
      * @brief The setter for the Unit::Unit object's name field
@@ -204,6 +225,13 @@ public:
      * @param studId The student ID of the student Enquiring about the Unit.
      */
     void display(int studId);
+
+    /**
+     * @brief The print statement to be used by the application in printing out
+     * the units' drscriptive details. This is less verbose
+     *
+     */
+    void appPrint();
 
     /**
      * @brief The print statement to be used by the lecturer in printing out
